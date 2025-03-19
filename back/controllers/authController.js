@@ -16,7 +16,7 @@ const login = async (req, res) => {
         }
 
         const token = jwt.sign({_id: user._id, role: user.role},
-            process.env.JWT_KEY, {expiresIn: "14d"}
+            process.env.JWT_KEY, {expiresIn: "12h"}
         )
 
         res.status(200).json({success: true, token, user: {_id: user._id, name: user.name, role: user.role}})
@@ -32,3 +32,5 @@ const verify = (req, res) => {
 }
 
 export {login, verify}
+
+//code file 6

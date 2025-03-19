@@ -41,7 +41,6 @@ function Login() {
                     <h2 className="text-xl font-semibold mb-4 text-center">Login</h2>
                     {error && <p className="text-red-500 text-sm mb-4 text-center">{error}</p>}
                     <form onSubmit={handleLogin}>
-                        {/* Email Input */}
                         <div className="mb-4">
                             <label htmlFor="email" className="block text-sm font-medium mb-2">
                                 Email
@@ -56,7 +55,6 @@ function Login() {
                             />
                         </div>
 
-                        {/* Password Input */}
                         <div className="mb-6">
                             <label htmlFor="password" className="block text-sm font-medium mb-2">
                                 Password
@@ -70,7 +68,6 @@ function Login() {
                             />
                         </div>
 
-                        {/* Remember Me and Forgot Password */}
                         <div className="flex items-center justify-between mb-6">
                             <label className="flex items-center">
                                 <input
@@ -84,7 +81,6 @@ function Login() {
                             </a>
                         </div>
 
-                        {/* Login Button */}
                         <div className="mb-4">
                             <button
                                 type="submit"
@@ -101,3 +97,5 @@ function Login() {
 }
 
 export default Login
+
+{/*Code file 9*/}

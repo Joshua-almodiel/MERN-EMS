@@ -54,3 +54,5 @@ const authContext = ({ children }) => {
 
 export const useAuth = () => useContext(userContext)
 export default authContext
+
+{/*Code file 10*/}

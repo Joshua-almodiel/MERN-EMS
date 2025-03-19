@@ -1,7 +1,6 @@
 import React from 'react'
 import AdminSideBar from '../components/dashboard/AdminSideBar.jsx'
 import NavBar from '../components/dashboard/NavBar.jsx'
-import AdminSummary from '../components/dashboard/AdminSummary.jsx'
 import { Outlet } from 'react-router-dom'
 
 
@@ -19,3 +18,5 @@ const AdminDashboard = () => {
 }
 
 export default AdminDashboard
+
+{/*Code file 7*/}

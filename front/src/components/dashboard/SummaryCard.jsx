@@ -16,3 +16,5 @@ const SummaryCard = ({ icon, text, number }) => {
 }
 
 export default SummaryCard
+
+{/* code file 16*/}
