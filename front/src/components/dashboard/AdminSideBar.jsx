@@ -23,7 +23,7 @@ const AdminSideBar = () => {
               <span>Dashboard</span>
             </NavLink>
             <NavLink
-              to="/employees"
+              to="/admin-dashboard/employees"
               className={({ isActive }) =>
                 `flex items-center p-2 rounded transition duration-200 ${
                   isActive

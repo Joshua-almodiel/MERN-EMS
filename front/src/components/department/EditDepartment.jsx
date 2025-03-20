@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const EditDepartment = () => {
     const [department, setDepartment] = useState([])
-    const { id } = useParams()
+    const {id} = useParams()
     const [depLoading, setDepLoading] = useState(false)
     const navigate = useNavigate()
 
@@ -12,13 +12,14 @@ const EditDepartment = () => {
         const fetchDepartments = async () => {
             setDepLoading(true)
             try {
-                const response = await axios.get(`http://localhost:5000/api/department/${id}`, {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('token')}`
-                    },
-                })
-                if (response.data.success) {
-                    navigate('/admin-dashboard/departments')
+                const responnse = await axios.get(`http://localhost:5000/api/department/${id}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem('token')}`
+                        },
+                    })
+                if (responnse.data.success) {
+                    setDepartment(responnse.data.department)
                 }
             } catch (error) {
                 if (error.response && !error.response.data.success) {
@@ -31,28 +32,31 @@ const EditDepartment = () => {
         fetchDepartments();
     }, []);
 
+    const handleChangeDep = (e) => {
+        const { name, value } = e.target;
+        setDepartment({ ...department, [name]: value });
+
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.put(`http://localhost:5000/api/department/${id}`, department, {
+            const response = await axios.put(`http://localhost:5000/api/department/${id}`,
+                department, {
                 headers: {
-                    "Authorization": `Bearer ${localStorage.getItem('token')}`
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
                 },
             })
             if (response.data.success) {
-                navigate("/admin-dashboard/departments")
+                navigate('/admin-dashboard/departments')
             }
         } catch (error) {
             if (error.response && !error.response.data.success) {
                 alert(error.response.data.error)
+
             }
         }
-    };
-
-    const handleChangeDep = (e) => {
-        const { name, value } = e.target;
-        setDepartment({ ...department, [name]: value })
-    };
+    }
 
     return (
         <>{depLoading ? <div>Loading .....</div> :

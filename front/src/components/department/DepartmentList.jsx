@@ -7,6 +7,12 @@ import axios from "axios";
 const DepartmentList = () => {
   const [departments, setDepartments] = useState([])
   const [depLoading, setDepLoading] = useState(false)
+  const [searchDepartment, setSearchDepartment] = useState()
+
+  const onDepartmentDelete = async (id) => {
+    const data = departments.filter(dep => dep._id !== id)
+    setDepartments(data)
+  }
 
   useEffect(() => {
     const fetchDepartments = async () => {
@@ -14,7 +20,7 @@ const DepartmentList = () => {
       try {
         const response = await axios.get('http://localhost:5000/api/department', {
           headers: {
-            "Authorization": `Bearer ${localStorage.getItem('token')}`
+            Authorization: `Bearer ${localStorage.getItem('token')}`
           }
         })
         if (response.data.success) {
@@ -24,10 +30,11 @@ const DepartmentList = () => {
               _id: dep._id,
               sno: sno++,
               dep_name: dep.dep_name,
-              action: (<DepartmentButtons _id={dep._id}/>)
+              action: (<DepartmentButtons _id={dep._id} onDepartmentDelete={onDepartmentDelete}/>)
             }
           ));
           setDepartments(data);
+          setSearchDepartment(data);
         }
       } catch (error) {
         if (error.response && !error.response.data.success) {
@@ -50,20 +57,25 @@ const DepartmentList = () => {
     },
     headRow: {
       style: {
-        backgroundColor: "#1F2937", 
-        color: "#FFFFFF", 
+        backgroundColor: "#1F2937",
+        color: "#FFFFFF",
         fontSize: "0.875rem",
         fontWeight: "600",
       },
     },
     pagination: {
       style: {
-        backgroundColor: "#1F2937", 
-        color: "#FFFFFF", 
+        backgroundColor: "#1F2937",
+        color: "#FFFFFF",
       },
     },
   };
-  
+
+
+  const searchDepartments = (e) => {
+    const records = departments.filter((dep) => dep.dep_name.toLowerCase().includes(e.target.value.toLowerCase()))
+    setSearchDepartment(records)
+  }
 
   return (
     <>
@@ -81,6 +93,7 @@ const DepartmentList = () => {
             <input
               type="text"
               placeholder="Search departments..."
+              onChange={searchDepartments}
               className="px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-black-500 text-white"
             />
 
@@ -95,7 +108,7 @@ const DepartmentList = () => {
           <div className="bg-gray-800 rounded-lg shadow-md overflow-hidden">
             <DataTable
               columns={columns}
-              data={departments}
+              data={searchDepartment}
               customStyles={customStyles}
               pagination
               highlightOnHover

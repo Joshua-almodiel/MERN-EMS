@@ -9,6 +9,7 @@ const AddDepartment = () => {
         description: ''
     })
     const navigate = useNavigate();
+
     const handleChangeDep = (e) => {
         const {name, value} = e.target;
         setDepartment({...department, [name] : value})
@@ -19,8 +20,8 @@ const AddDepartment = () => {
         try{
             const response = await axios.post('http://localhost:5000/api/department/add', department, {
                 headers: {
-                    "Authorization": `Bearer ${localStorage.getItem('token')}`
-                }
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                },
             })
             if(response.data.success) {
                 navigate("/admin-dashboard/departments")
