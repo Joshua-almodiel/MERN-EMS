@@ -29,7 +29,7 @@ const Edit = () => {
 
 
     useEffect(() => {
-        const fetchEmployee = async () => {
+        const fetchEmployees = async () => {
             try {
                 const responnse = await axios.get(`http://localhost:5000/api/employee/${id}`,
                     {
@@ -47,7 +47,7 @@ const Edit = () => {
                 }
             }
         };
-        fetchEmployee();
+        fetchEmployees();
     }, [])
 
     const handleChange = (e) => {

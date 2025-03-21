@@ -7,7 +7,7 @@ const View = () => {
     const [employee, setEmployee] = useState(null)
 
     useEffect(() => {
-        const fetchEmployee = async () => {
+        const fetchEmployees = async () => {
             try {
                 const responnse = await axios.get(`http://localhost:5000/api/employee/${id}`,
                     {
@@ -24,7 +24,7 @@ const View = () => {
                 }
             }
         };
-        fetchEmployee();
+        fetchEmployees();
     }, []);
 
     if (!employee) {

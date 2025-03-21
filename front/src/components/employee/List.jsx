@@ -7,6 +7,7 @@ import axios from 'axios'
 const List = () => {
     const [employees, setEmployees] = useState([])
     const [empLoading, setEmpLoading] = useState(false)
+    const [searchEmployee, setSearchEmployee] = useState()
 
     useEffect(() => {
         const fetchEmployees = async () => {
@@ -31,6 +32,7 @@ const List = () => {
                         }
                     ));
                     setEmployees(data);
+                    setSearchEmployee(data);
                     console.log(employees);
                 }
                 console.log(response.data.employees);
@@ -69,6 +71,13 @@ const List = () => {
         },
     };
 
+    const handleFilter = (e) => {
+        const records = employees.filter((emp) => {
+            return emp.name.toLowerCase().includes(e.target.value.toLowerCase());
+        })
+        setSearchEmployee(records)
+    }
+
 
     return (
         <div className='p-6 bg-gray-900 text-white'>
@@ -79,6 +88,7 @@ const List = () => {
             <div className="flex items-center justify-between mb-6">
                 <input
                     type="text"
+                    onChange={handleFilter}
                     placeholder="Search departments..."
                     className="px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-black-500 text-white"
                 />
@@ -93,7 +103,7 @@ const List = () => {
             <div>
                 <DataTable
                     columns={columns}
-                    data={employees}
+                    data={searchEmployee}
                     customStyles={customStyles}
                     pagination
                     highlightOnHover
