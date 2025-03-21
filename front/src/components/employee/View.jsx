@@ -38,7 +38,7 @@ const View = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
                     <div className="flex justify-center items-center">
-                        <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-gray-700 shadow-lg hover:border-blue-500 transition duration-200">
+                        <div className="w-64 h-64 overflow-hidden border-4 border-gray-700 shadow-lg hover:border-blue-500 transition duration-200">
                             <img
                                 src={`http://localhost:5000/${employee.userId.profileImage}`}
                                 alt="Profile"

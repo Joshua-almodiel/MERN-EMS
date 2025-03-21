@@ -1,6 +1,6 @@
 import React from 'react'
 import AdminSideBar from '../components/dashboard/AdminSideBar.jsx'
-import NavBar from '../components/dashboard/NavBar.jsx'
+import NavBar from '../components/dashboard/Navbar.jsx'
 import { Outlet } from 'react-router-dom'
 
 
