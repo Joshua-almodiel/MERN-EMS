@@ -8,7 +8,7 @@ router.get('/', authMiddleware, getEmployees)
 router.post('/add', authMiddleware, upload.single('image'), addEmployee)
 router.get('/:id', authMiddleware, getEmployee)
 router.put('/:id', authMiddleware, updateEmployee)
-router.delete('/department/:id', authMiddleware, fetchEmployeesByDepId)
+router.get('/department/:id', authMiddleware, fetchEmployeesByDepId)
 
 
 

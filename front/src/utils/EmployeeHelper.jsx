@@ -85,7 +85,8 @@ export const EmployeeButtons = ({ _id }) => {
                     onClick={() => navigate(`/admin-dashboard/employees/${_id}`)}>View</button>
                 <button className="text-red-500 hover:text-blue-600"
                     onClick={() => navigate(`/admin-dashboard/employees/edit/${_id}`)}>Edit</button>
-                <button className="text-red-500 hover:text-blue-600">Salary</button>
+                <button className="text-red-500 hover:text-blue-600"
+                    onClick={() => navigate(`/admin-dashboard/employees/salary/${_id}`)}>Salary</button>
                 <button className="text-red-500 hover:text-red-600">Leave</button>
             </div>
         </div>
