@@ -20,7 +20,7 @@ const addLeave = async (req, res) => {
 
 }
 
-const getLeaves = async (req, res) => {
+const getLeave = async (req, res) => {
     try{
         const {id} = req.params;
         const employee = await Employee.findOne({userId: id})
@@ -29,8 +29,32 @@ const getLeaves = async (req, res) => {
         return res.status(200).json({success: true, leaves})
 
     } catch(error) {
+        return res.status(400).json({ success: false, error: "Leave add server error" })
+    }
+}
+
+const getLeaves = async (req, res) => {
+    try{
+        const leaves = await Leave.find().populate({
+            path: "employeeId",
+            populate: [
+                {
+                    path: 'department',
+                    select: 'dep_name'
+                },
+                {
+                    path: 'userId',
+                    select: 'name'
+                }
+            ]
+        })
+        console.log(leaves)
+
+        return res.status(200).json({success: true, leaves})
+
+    } catch(error) {
         return res.status(400).json({ success: false, error: "Leave get server error" })
     }
 }
 
-export { addLeave, getLeaves }
+export { addLeave, getLeave, getLeaves }

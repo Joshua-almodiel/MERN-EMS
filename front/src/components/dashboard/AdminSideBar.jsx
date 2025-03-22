@@ -9,6 +9,7 @@ const AdminSideBar = () => {
             <h3 className="text-lg font-semibold">Employee MS</h3>
           </div>
           <div className="flex flex-col p-2 space-y-2">
+            
             <NavLink
               to="/admin-dashboard"
               className={({ isActive }) =>
@@ -22,6 +23,7 @@ const AdminSideBar = () => {
               <FaTachometerAlt className="mr-2" />
               <span>Dashboard</span>
             </NavLink>
+
             <NavLink
               to="/admin-dashboard/employees"
               className={({ isActive }) =>
@@ -35,6 +37,7 @@ const AdminSideBar = () => {
               <FaUsers className="mr-2" />
               <span>Employee</span>
             </NavLink>
+
             <NavLink
               to="/admin-dashboard/departments"
               className={({ isActive }) =>
@@ -48,8 +51,9 @@ const AdminSideBar = () => {
               <FaBuilding className="mr-2" />
               <span>Department</span>
             </NavLink>
+
             <NavLink
-              to="/leave"
+              to="/admin-dashboard/leaves"
               className={({ isActive }) =>
                 `flex items-center p-2 rounded transition duration-200 ${
                   isActive
@@ -61,6 +65,7 @@ const AdminSideBar = () => {
               <FaCalendarAlt className="mr-2" />
               <span>Leave</span>
             </NavLink>
+
             <NavLink
               to="/admin-dashboard/salary/add"
               className={({ isActive }) =>
@@ -74,6 +79,7 @@ const AdminSideBar = () => {
               <FaMoneyBillWave className="mr-2" />
               <span>Salary</span>
             </NavLink>
+
             <NavLink
               to="/settings"
               className={({ isActive }) =>
@@ -87,6 +93,7 @@ const AdminSideBar = () => {
               <FaCogs className="mr-2" />
               <span>Settings</span>
             </NavLink>
+
           </div>
         </div>
       );
