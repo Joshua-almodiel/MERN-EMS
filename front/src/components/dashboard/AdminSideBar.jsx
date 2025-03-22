@@ -15,8 +15,8 @@ const AdminSideBar = () => {
               className={({ isActive }) =>
                 `flex items-center p-2 rounded transition duration-200 ${
                   isActive
-                    ? "bg-blue-500 text-white" // Active link style
-                    : "hover:bg-gray-700" // Inactive link style
+                    ? "bg-blue-500 text-white"
+                    : "hover:bg-gray-700" 
                 }`
               } end
             >
@@ -29,8 +29,8 @@ const AdminSideBar = () => {
               className={({ isActive }) =>
                 `flex items-center p-2 rounded transition duration-200 ${
                   isActive
-                    ? "bg-blue-500 text-white" // Active link style
-                    : "hover:bg-gray-700" // Inactive link style
+                    ? "bg-blue-500 text-white" 
+                    : "hover:bg-gray-700" 
                 }`
               }
             >
@@ -43,8 +43,8 @@ const AdminSideBar = () => {
               className={({ isActive }) =>
                 `flex items-center p-2 rounded transition duration-200 ${
                   isActive
-                    ? "bg-blue-500 text-white" // Active link style
-                    : "hover:bg-gray-700" // Inactive link style
+                    ? "bg-blue-500 text-white" 
+                    : "hover:bg-gray-700" 
                 }`
               }
             >
@@ -57,8 +57,8 @@ const AdminSideBar = () => {
               className={({ isActive }) =>
                 `flex items-center p-2 rounded transition duration-200 ${
                   isActive
-                    ? "bg-blue-500 text-white" // Active link style
-                    : "hover:bg-gray-700" // Inactive link style
+                    ? "bg-blue-500 text-white" 
+                    : "hover:bg-gray-700" 
                 }`
               }
             >
@@ -71,8 +71,8 @@ const AdminSideBar = () => {
               className={({ isActive }) =>
                 `flex items-center p-2 rounded transition duration-200 ${
                   isActive
-                    ? "bg-blue-500 text-white" // Active link style
-                    : "hover:bg-gray-700" // Inactive link style
+                    ? "bg-blue-500 text-white" 
+                    : "hover:bg-gray-700" 
                 }`
               }
             >
@@ -81,12 +81,12 @@ const AdminSideBar = () => {
             </NavLink>
 
             <NavLink
-              to="/settings"
+              to="/admin-dashboard/setting"
               className={({ isActive }) =>
                 `flex items-center p-2 rounded transition duration-200 ${
                   isActive
-                    ? "bg-blue-500 text-white" // Active link style
-                    : "hover:bg-gray-700" // Inactive link style
+                    ? "bg-blue-500 text-white" 
+                    : "hover:bg-gray-700"
                 }`
               }
             >

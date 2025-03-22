@@ -50,6 +50,7 @@ function App() {
           <Route path="/admin-dashboard/employees/leaves/:id" element={<LeaveList />}></Route>
 
           <Route path="/admin-dashboard/salary/add" element={<AddSalary />}></Route>
+          <Route path="/admin-dashboard/setting" element={<Setting />}></Route>
 
           <Route path="/admin-dashboard/leaves" element={<TableLeave />}></Route>
           <Route path="/admin-dashboard/leaves/:id" element={<DetailsLeave />}></Route>
