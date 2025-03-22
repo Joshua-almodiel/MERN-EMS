@@ -23,13 +23,13 @@ const addLeave = async (req, res) => {
 const getLeave = async (req, res) => {
     try {
         const { id } = req.params;
-        let leavess = await Leave.find({ employeeId: id })
-        if (!leavess || leaves.length === 0) {
+        let leaves = await Leave.find({ employeeId: id })
+        if (!leaves || leaves.length === 0) {
             const employee = await Employee.findOne({ userId: id })
-            leavess = await Leave.find({ employeeId: employee._id })
+            leaves = await Leave.find({ employeeId: employee._id })
         }
 
-        return res.status(200).json({ success: true, leavess })
+        return res.status(200).json({ success: true, leaves })
 
     } catch (error) {
         return res.status(400).json({ success: false, error: "Leave add server error" })
