@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const View = () => {
 
@@ -54,7 +54,7 @@ const View = () => {
                         <input
                             type="text"
                             placeholder="Search By Employee ID"
-                            onChange={(e) => filterSalaries(e.target.value)}
+                            onChange={filterSalaries}
                             className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white"
                         />
                     </div>
@@ -75,7 +75,7 @@ const View = () => {
                                 </thead>
                                 <tbody>
                                     {filteredSalaries.map((salary) => (
-                                        <tr key={salary._id} className="border-b border-gray-700 hover:bg-gray-700 transition duration-200">
+                                        <tr key={salary.id} className="border-b border-gray-700 hover:bg-gray-700 transition duration-200">
                                             <td className="px-4 py-2">{sno++}</td>
                                             <td className="px-4 py-2">{salary.employeeId.employeeId}</td>
                                             <td className="px-4 py-2">{salary.basicSalary}</td>

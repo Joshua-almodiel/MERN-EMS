@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../context/authContext";
 
 const List = () => {
-    const {user} = useAuth()
-    const [leaves, setLeaves] = useState([])
+    const [leaves, setLeaves] = useState(null)
     let sno = 1;
+    const { id } = useParams()
+    const { user } = useAuth()
 
     const fetchLeaves = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/leave/${user._id}`, {
+            const response = await axios.get(`http://localhost:5000/api/leave/${id}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
@@ -30,6 +31,10 @@ const List = () => {
     }, [])
 
 
+    if (!leaves) {
+        return <div>Loading ...</div>
+    }
+
 
 
     return (
@@ -44,13 +49,14 @@ const List = () => {
                     placeholder="Search by department name"
                     className="w-full max-w-md px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white"
                 />
-
-                <Link
-                    to="/employee-dashboard/add-leave"
-                    className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-200"
-                >
-                    Add New Leave
-                </Link>
+                {user.role === "employee" &&
+                    <Link
+                        to="/employee-dashboard/add-leave"
+                        className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-200"
+                    >
+                        Add New Leave
+                    </Link>
+                }
             </div>
 
             <div className="bg-gray-800 rounded-lg shadow-md overflow-hidden">
