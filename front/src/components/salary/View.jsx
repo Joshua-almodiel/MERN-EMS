@@ -1,33 +1,35 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useAuth } from '../../context/authContext'
 
 const View = () => {
 
 
     const [salaries, setSalaries] = useState(null)
-    const [filteredSalaries, setFilteredSalaries] = useState(null)
+    const [filteredSalaries, setFilteredSalaries] = useState([])
     const { id } = useParams()
+    const {user} = useAuth()
     let sno = 1;
 
     const fetchSalaries = async () => {
-        try {
-            const response = await axios.get(`http://localhost:5000/api/salary/${id}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`,
-                },
-            });
-            console.log(response.data)
-            if (response.data.success) {
-                setSalaries(response.data.salary)
-                setFilteredSalaries(response.data.salary)
-            }
-        } catch (error) {
-            if (error.response && !error.response.data.success) {
-                alert(error.message)
-            }
+    try {
+        console.log("Fetching salary for ID:", id);
+        const response = await axios.get(`http://localhost:5000/api/salary/${id}/${user.role}`, {
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        });
+
+        console.log("API Response: ", response.data);
+
+        if (response.data.success) {
+            setSalaries(response.data.salary);
+            setFilteredSalaries(response.data.salary);
         }
+    } catch (error) {
+        console.error("Error fetching salary:", error);
     }
+};
+
 
     useEffect(() => {
         fetchSalaries()

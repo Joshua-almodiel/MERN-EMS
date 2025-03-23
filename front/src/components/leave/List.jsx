@@ -4,41 +4,39 @@ import axios from "axios";
 import { useAuth } from "../../context/authContext";
 
 const List = () => {
-    const [leaves, setLeaves] = useState(null)
+    const [leaves, setLeaves] = useState([])
     let sno = 1;
     const { id } = useParams()
     const { user } = useAuth()
 
     const fetchLeaves = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/leave/${id}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`,
-                },
+            console.log("Fetching leaves for ID:", id);
+            const response = await axios.get(`http://localhost:5000/api/leave/${id}/${user.role}`, {
+                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
             });
-            console.log(response.data)
+
+            console.log("API Response: ", response.data);
+
             if (response.data.success) {
-                setLeaves(response.data.leaves)
+                setLeaves(response.data.leaves);
             }
         } catch (error) {
-            if (error.response && !error.response.data.success) {
-                alert(error.message)
-            }
+            
         }
-    }
+    };
+
 
     useEffect(() => {
         fetchLeaves()
     }, [])
 
 
-    if (!leaves) {
-        return <div>Loading ...</div>
-    }
 
 
 
     return (
+
         <div className="p-6 bg-gray-900 text-white">
             <div className="mb-6">
                 <h3 className="text-2xl font-semibold">Manage Leaves</h3>
@@ -88,6 +86,10 @@ const List = () => {
             </div>
 
         </div>
+
+
+
+
     );
 };
 

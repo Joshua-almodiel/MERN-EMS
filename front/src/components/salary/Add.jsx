@@ -85,7 +85,7 @@ const Add = () => {
 
                         <div>
                             <label htmlFor="employee" className="block text-sm font-medium mb-2">
-                                Employee
+                                Employee ID
                             </label>
                             <select
                                 name="employeeId"
@@ -169,7 +169,7 @@ const Add = () => {
                     </div>
                 </form>
             </div>
-        ) : <div>Loading .....</div>}</>
+        ) : <div className="p-6 bg-gray-900 text-white">Loading...</div>}</>
     );
 };
 

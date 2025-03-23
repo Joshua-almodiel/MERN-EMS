@@ -59,7 +59,7 @@ const EditDepartment = () => {
     }
 
     return (
-        <>{depLoading ? <div>Loading .....</div> :
+        <>{depLoading ? <div className="p-6 bg-gray-900 text-white">Loading...</div> :
             <div className="p-6 bg-gray-900 text-white">
                 <div className="mb-6">
                     <h3 className="text-2xl font-semibold">Edit Department</h3>

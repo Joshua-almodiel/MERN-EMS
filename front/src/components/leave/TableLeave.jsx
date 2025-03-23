@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
-import { columns, LeaveButtons } from "../../utils/LeaveHelper";
+import { columns, LeaveButtons } from "../../utils/LeaveHelper.jsx";
 import axios from "axios";
 
 const TableLeave = () => {
@@ -15,7 +15,7 @@ const TableLeave = () => {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             })
-            console.log(responnse.data)
+            console.log(responnse)
             if (responnse.data.success) {
                 let sno = 1;
                 const data = await responnse.data.leaves.map((leave) => (
@@ -125,7 +125,7 @@ const TableLeave = () => {
 
 
                 </div>
-            ) : <div>Loading ....</div>}
+            ) : <div className="p-6 bg-gray-900 text-white">Loading...</div>}
         </>
     );
 };

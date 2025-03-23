@@ -65,7 +65,7 @@ export const getEmployees = async (id) => {
             }
         })
         if (response.data.success) {
-            employees = response.data.employees
+            return response.data.employees
         }
     } catch (error) {
         if (error.response && !error.response.data.success) {
